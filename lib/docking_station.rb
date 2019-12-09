@@ -10,6 +10,7 @@ class DockingStation
   end
 
   def release_bike
+    @bike
   end
 
 end
