@@ -19,11 +19,15 @@ describe DockingStation do
         # use mocks to test whether calling release_bike on a double of dockingstation releases the bike double
       bike_double = double :bike
       bike_class_double = double :bike_class, new: bike_double
-
       docking_station = DockingStation.new(bike_class_double)
-
       expect(docking_station.bike).to eq(bike_double)
-      expect(docking_station.release_bike).to eq(bike_double)
+      end
+      it 'the docking station should be empty once the bike is released' do
+        bike_double = double :bike
+        bike_class_double = double :bike_class, new: bike_double
+        docking_station = DockingStation.new(bike_class_double)
+        docking_station.release_bike
+        expect(docking_station.bike).to eq(nil)
       end
     end
 

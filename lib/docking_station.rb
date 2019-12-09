@@ -10,7 +10,7 @@ class DockingStation
   end
 
   def release_bike
-    @bike
+    @bike = nil
   end
 
 end
@@ -20,4 +20,7 @@ end
 
 # p bike = Bike.new
 p dst = DockingStation.new
+p dst.bike
+p dst.bike.working?
+p dst.release_bike
 p dst.bike
