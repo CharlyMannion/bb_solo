@@ -3,6 +3,8 @@ require 'bike'
 
 describe DockingStation do
     it { is_expected.to respond_to "release_bike" }
+    it { is_expected.to respond_to "dock" }
+
 
     describe '#initialize' do
       it 'should have a bike' do
@@ -29,6 +31,14 @@ describe DockingStation do
         docking_station.release_bike
         expect(docking_station.bike).to eq(nil)
       end
+    end
+
+    describe '#dock' do
+      # it 'should dock a bike' do
+      #   dst = DockingStation.new
+      #   dst.release_bike
+      #   dst.dock(Bi)
+      # end
     end
 
 end

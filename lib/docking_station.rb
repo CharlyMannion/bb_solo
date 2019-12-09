@@ -13,14 +13,18 @@ class DockingStation
     @bike = nil
   end
 
+  def dock
+  end
+
 end
 
 # require './lib/docking_station.rb'
 
 
 # p bike = Bike.new
-p dst = DockingStation.new
-p dst.bike
-p dst.bike.working?
-p dst.release_bike
-p dst.bike
+# p dst = DockingStation.new
+# p dst.bike
+# # p dst.bike.working?
+# p dst.release_bike
+# p dst.bike
+# p dst.
