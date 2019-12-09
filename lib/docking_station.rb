@@ -10,17 +10,12 @@ class DockingStation
   end
 
   def release_bike
-    raise "No bikes available" if @bike=nil
+    fail "No bikes available" unless @bike
     @bike = nil
   end
 
   def dock(bike = Bike.new)
     @bike = bike
-  end
-
-  private
-  def empty?
-    @bike = nil
   end
 
 end
