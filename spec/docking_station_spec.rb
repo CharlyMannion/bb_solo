@@ -31,6 +31,13 @@ describe DockingStation do
         docking_station.release_bike
         expect(docking_station.bike).to eq(nil)
       end
+      it 'should raise an error if you try to release a bike from an empty dock' do
+        p dst = DockingStation.new
+        p dst.release_bike
+        p "below release bike"
+        p dst
+        expect { dst.release_bike }.to raise_error "No bikes available"
+      end
     end
 
     describe '#dock' do

@@ -10,11 +10,17 @@ class DockingStation
   end
 
   def release_bike
+    raise "No bikes available" if @bike=nil
     @bike = nil
   end
 
   def dock(bike = Bike.new)
     @bike = bike
+  end
+
+  private
+  def empty?
+    @bike = nil
   end
 
 end
@@ -25,7 +31,7 @@ end
 # p bike = Bike.new
 # p dst = DockingStation.new
 # p dst.bike
-# # p dst.bike.working?
+# p dst.bike.working?
 # p dst.release_bike
+# dst.dock
 # p dst.bike
-# p dst.
