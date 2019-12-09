@@ -48,6 +48,10 @@ describe DockingStation do
         dst.dock(bike_double)
         expect(dst.bike).to eq(bike_double)
       end
+      it 'should raise an error if the docking station already has a bike' do
+        dst = DockingStation.new
+        expect { dst.dock }.to raise_error "Docking station full"
+      end
     end
 
 end
