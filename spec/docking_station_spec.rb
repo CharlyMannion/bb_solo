@@ -14,8 +14,9 @@ describe DockingStation do
 
     describe '#release_bike' do
       it 'should release the bike' do
-    
-
+        p dst = DockingStation.new
+        p dst.bike
+        # use mocks to test whether calling release_bike on a double of dockingstation releases the bike double
       end
     end
 
