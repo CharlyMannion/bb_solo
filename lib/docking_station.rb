@@ -14,6 +14,9 @@ class DockingStation
 
 end
 
+# require './lib/docking_station.rb'
+
+
 # p bike = Bike.new
 p dst = DockingStation.new
 p dst.bike
