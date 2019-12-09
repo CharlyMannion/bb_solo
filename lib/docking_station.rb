@@ -6,7 +6,7 @@ class DockingStation
 
   def initialize(bike_class = Bike)
     @bike_class = bike_class
-    @bike  = Bike.new
+    @bike  = @bike_class.new
   end
 
   def release_bike

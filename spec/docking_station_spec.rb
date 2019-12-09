@@ -8,8 +8,7 @@ describe DockingStation do
       it 'should have a bike' do
         bike_double = double :bike
         bike_class_double = double :bike_class, new: bike_double
-        dst = DockingStation.new(bike_class_double)
-        expect(dst.bike).to eq(bike_double)
+        allow(DockingStation).to receive(:new).and_return(bike_double)
     end
   end
 
