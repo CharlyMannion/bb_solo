@@ -34,11 +34,13 @@ describe DockingStation do
     end
 
     describe '#dock' do
-      # it 'should dock a bike' do
-      #   dst = DockingStation.new
-      #   dst.release_bike
-      #   dst.dock(Bi)
-      # end
+      it 'should dock a bike' do
+        dst = DockingStation.new
+        dst.release_bike
+        bike_double = double :bike, working?: true
+        dst.dock(bike_double)
+        expect(dst.bike).to eq(bike_double)
+      end
     end
 
 end

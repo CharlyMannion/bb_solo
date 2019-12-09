@@ -13,7 +13,8 @@ class DockingStation
     @bike = nil
   end
 
-  def dock
+  def dock(bike = Bike.new)
+    @bike = bike
   end
 
 end
