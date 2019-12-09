@@ -15,4 +15,13 @@ describe Bike do
       bike = Bike.new
     end
   end
+
+  describe '#break_bike' do
+    it 'marks the bike as broken' do
+      bike = Bike.new
+      bike.break_bike
+      expect(bike.working?).to eq(false)
+    end
+  end
+  
 end

@@ -6,4 +6,8 @@ class Bike
   def working?
     @working
   end
+
+  def break_bike
+    @working = false
+  end
 end
