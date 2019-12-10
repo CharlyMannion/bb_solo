@@ -12,8 +12,10 @@ describe DockingStation do
         bike_class_double = double :bike_class, new: bike_double
         allow(DockingStation).to receive(:new).and_return(bike_double)
       end
-      it 'should have the capacity ro hold 20 bikes' do
-        dst = DockingStation.new
+      it 'should have the capacity to hold 20 bikes' do
+        bike_double = double :bike
+        bike_class_double = double :bike_class, new: bike_double
+        dst = DockingStation.new(bike_class_double)
         expect(dst.capacity).to eq(20)
       end
     end

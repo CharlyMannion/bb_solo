@@ -7,6 +7,7 @@ class DockingStation
   def initialize(bike_class = Bike)
     @bike_class = bike_class
     @bike  = @bike_class.new
+    # @bikes = [@bike]
     @capacity = 20
   end
 
