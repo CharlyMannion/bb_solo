@@ -39,7 +39,6 @@ describe DockingStation do
         dst = DockingStation.new
         dst.release_bike
         "below release bike"
-        dst
         expect { dst.release_bike }.to raise_error "No bikes available"
       end
     end
