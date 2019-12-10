@@ -18,6 +18,12 @@ describe DockingStation do
         dst = DockingStation.new(bike_class_double)
         expect(dst.capacity).to eq(20)
       end
+      it 'should have a record of the bikes docked' do
+        bike_double = double :bike
+        bike_class_double = double :bike_class, new: bike_double
+        dst = DockingStation.new(bike_class_double)
+        expect(dst.bikes).to eq([bike_double])
+      end
     end
 
     describe '#release_bike' do
