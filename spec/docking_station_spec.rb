@@ -12,6 +12,10 @@ describe DockingStation do
         bike_class_double = double :bike_class, new: bike_double
         allow(DockingStation).to receive(:new).and_return(bike_double)
       end
+      it 'should have the capacity ro hold 20 bikes' do
+        dst = DockingStation.new
+        expect(dst.capacity).to eq(20)
+      end
     end
 
     describe '#release_bike' do
@@ -32,10 +36,10 @@ describe DockingStation do
         expect(docking_station.bike).to eq(nil)
       end
       it 'should raise an error if you try to release a bike from an empty dock' do
-        p dst = DockingStation.new
-        p dst.release_bike
-        p "below release bike"
-        p dst
+        dst = DockingStation.new
+        dst.release_bike
+        "below release bike"
+        dst
         expect { dst.release_bike }.to raise_error "No bikes available"
       end
     end

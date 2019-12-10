@@ -2,11 +2,12 @@ require_relative 'bike'
 
 class DockingStation
 
-  attr_accessor :bike
+  attr_accessor :bike, :capacity
 
   def initialize(bike_class = Bike)
     @bike_class = bike_class
     @bike  = @bike_class.new
+    @capacity = 20
   end
 
   def release_bike
@@ -25,4 +26,4 @@ end
 
 
 # p bike = Bike.new
-p dst = DockingStation.new
+# p dst = DockingStation.new
