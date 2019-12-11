@@ -10,4 +10,8 @@ class Bike
   def break_bike
     @working = false
   end
+
+  def broken?
+    !@working
+  end
 end

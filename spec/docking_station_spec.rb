@@ -34,7 +34,7 @@ describe DockingStation do
         expect(docking_station.bike).to eq(bike_double)
       end
       it 'the docking station should be empty once the bike is released' do
-        bike_double = double :bike, working?: true
+        bike_double = double :bike, working?: true, broken?: false
         bike_class_double = double :bike_class, new: bike_double
         docking_station = DockingStation.new(bike_class_double)
         docking_station.release_bike
@@ -46,7 +46,7 @@ describe DockingStation do
         expect { dst.release_bike }.to raise_error "No bikes available"
       end
       it 'should not release a broken bike' do
-        bike_double = double :bike, working?: true
+        bike_double = double :bike, working?: true, broken?: false
         bike_class_double = double :bike_class, new: bike_double
         docking_station = DockingStation.new(bike_class_double)
         broken_bike_double = double :bike, working?: false
@@ -55,15 +55,24 @@ describe DockingStation do
         expect(docking_station.bikes).to eq([broken_bike_double])
       end
       it 'should only release one bike at a time' do
-        bike_double = double :bike, working?: true
-        broken_bike_double = double :bike, working?: false
-        working_bike_double = double :bike, working?: true
+        bike_double = double :bike, working?: true, broken?: false
+        broken_bike_double = double :bike, working?: false, broken?: true
+        working_bike_double = double :bike, working?: true, broken?: false
         bike_class_double = double :bike_class, new: bike_double
         docking_station = DockingStation.new(bike_class_double)
         docking_station.dock(broken_bike_double)
         docking_station.dock(working_bike_double)
         docking_station.release_bike
         expect(docking_station.bikes.count).to eq(2)
+      end
+      it 'should raise an error if there is only a broken bike in the dock' do
+        bike_double = double :bike, working?: true, broken?: false
+        broken_bike_double = double :bike, working?: false, broken?: true
+        bike_class_double = double :bike_class, new: bike_double
+        docking_station = DockingStation.new(bike_class_double)
+        docking_station.release_bike
+        docking_station.dock(broken_bike_double)
+        expect { docking_station.release_bike }.to raise_error "No working bikes available"
       end
     end
 

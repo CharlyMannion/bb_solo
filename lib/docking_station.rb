@@ -15,6 +15,7 @@ class DockingStation
 
   def release_bike
     fail "No bikes available" if empty?
+    fail "No working bikes available" if all_broken?
     @bikes.delete_at(working_bike_index)
   end
 
@@ -37,6 +38,10 @@ class DockingStation
     @bikes.each_with_index do |bike, index|
       return index if bike.working?
     end
+  end
+
+  def all_broken?
+    bikes.all? { |bike| bike.broken? }
   end
 
 end
