@@ -34,7 +34,7 @@ describe DockingStation do
         expect(docking_station.bike).to eq(bike_double)
       end
       it 'the docking station should be empty once the bike is released' do
-        bike_double = double :bike
+        bike_double = double :bike, working?: true
         bike_class_double = double :bike_class, new: bike_double
         docking_station = DockingStation.new(bike_class_double)
         docking_station.release_bike
@@ -43,8 +43,16 @@ describe DockingStation do
       it 'should raise an error if you try to release a bike from an empty dock' do
         dst = DockingStation.new
         dst.release_bike
-        "below release bike"
         expect { dst.release_bike }.to raise_error "No bikes available"
+      end
+      it 'should not release a broken bike' do
+        bike_double = double :bike, working?: true
+        bike_class_double = double :bike_class, new: bike_double
+        docking_station = DockingStation.new(bike_class_double)
+        broken_bike_double = double :bike, working?: false
+        docking_station.dock(broken_bike_double)
+        docking_station.release_bike
+        expect(docking_station.bikes).to eq([broken_bike_double])
       end
     end
 

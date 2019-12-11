@@ -15,7 +15,7 @@ class DockingStation
 
   def release_bike
     fail "No bikes available" if empty?
-    @bikes.pop
+    @bikes.delete_at(working_bike_index)
   end
 
   def dock(bike = Bike.new)
@@ -24,12 +24,19 @@ class DockingStation
   end
 
   private
+
   def full?
     @bikes.count >= 20
   end
 
   def empty?
     @bikes.count == 0
+  end
+
+  def working_bike_index
+    @bikes.each_with_index do |bike, index|
+      return index if bike.working?
+    end
   end
 
 end
