@@ -50,15 +50,15 @@ describe DockingStation do
 
     describe '#dock' do
       it 'should dock a bike' do
-        dst = DockingStation.new
-        dst.release_bike
-        bike_double = double :bike, working?: true
+        bike_double = double :bike
+        bike_class_double = double :bike_class, new: bike_double
+        dst = DockingStation.new(bike_class_double)
         dst.dock(bike_double)
-        expect(dst.bike).to eq(bike_double)
+        expect(dst.bikes).to include(bike_double)
       end
       it 'should raise an error if the docking station is full' do
         dst = DockingStation.new
-        19.times { docking_station.dock }
+        19.times { dst.dock }
         expect { dst.dock }.to raise_error "Docking station full"
       end
     end
