@@ -6,6 +6,7 @@ describe DockingStation do
   let(:work_bike) { double :bike, working?: true, broken?: false }
   let(:broke_bike) { double :bike, working?: false, broken?: true }
   let(:work_bike_two) { double :bike, working?: true, broken?: false }
+  let(:broke_bike_two) { double :bike, working?: false, broken?: true }
   let(:bk_class_double) { double :bike_class, new: work_bike }
 
     it { is_expected.to respond_to "release_bike" }
@@ -99,6 +100,25 @@ describe DockingStation do
         dst = DockingStation.new
         19.times { dst.dock }
         expect { dst.dock }.to raise_error "Docking station full"
+      end
+    end
+
+    describe '#collect_broken_bikes' do
+      it 'should gather the broken bikes from @bikes' do
+        bikeone = work_bike
+        biketwo = work_bike_two
+        bikethree = broke_bike
+        bikefour = broke_bike_two
+        bike_class_double = bk_class_double
+        dst = DockingStation.new(bike_class_double)
+        dst.dock(biketwo)
+        dst.dock(bikethree)
+        dst.dock(bikefour)
+        dst.collect_broken_bikes
+        p "broken bikes"
+        p dst.broken_bikes
+        expect(dst.broken_bikes.count).to be(2)
+        expect(dst.broken_bikes).to eq([bikethree, bikefour])
       end
     end
 

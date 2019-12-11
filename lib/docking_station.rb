@@ -2,7 +2,7 @@ require_relative 'bike'
 
 class DockingStation
 
-  attr_accessor :bike, :capacity, :bikes
+  attr_accessor :bike, :capacity, :bikes, :broken_bikes
   DEFAULT_CAPACITY = 20
 
   def initialize(bike_class = Bike, capacity = DEFAULT_CAPACITY)
@@ -11,6 +11,7 @@ class DockingStation
     @bike  = @bike_class.new
     @bikes = [@bike]
     @capacity = capacity
+    @broken_bikes = []
   end
 
   def release_bike
@@ -22,6 +23,12 @@ class DockingStation
   def dock(bike = Bike.new)
     fail "Docking station full" if full?
     @bikes << bike
+  end
+
+  def collect_broken_bikes
+    @bikes.each do |bike|
+      @broken_bikes << bike if bike.broken?
+    end
   end
 
   private
@@ -51,3 +58,18 @@ end
 
 # p bike = Bike.new
 # p dst = DockingStation.new(bike_class = Bike, capacity=30)
+
+# bikeone = Bike.new
+# biketwo = Bike.new
+# bikethree = Bike.new
+# bikefour = Bike.new
+# bikethree.break_bike
+# bikefour.break_bike
+# p dst = DockingStation.new
+# p dst.dock(bikeone)
+# p dst.dock(biketwo)
+# p dst.dock(bikethree)
+# p dst.dock(bikefour)
+# p dst.collect_broken_bikes
+# p "broken bikes"
+# p dst.broken_bikes
