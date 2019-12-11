@@ -54,6 +54,17 @@ describe DockingStation do
         docking_station.release_bike
         expect(docking_station.bikes).to eq([broken_bike_double])
       end
+      it 'should only release one bike at a time' do
+        bike_double = double :bike, working?: true
+        broken_bike_double = double :bike, working?: false
+        working_bike_double = double :bike, working?: true
+        bike_class_double = double :bike_class, new: bike_double
+        docking_station = DockingStation.new(bike_class_double)
+        docking_station.dock(broken_bike_double)
+        docking_station.dock(working_bike_double)
+        docking_station.release_bike
+        expect(docking_station.bikes.count).to eq(2)
+      end
     end
 
     describe '#dock' do
