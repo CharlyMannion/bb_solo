@@ -38,7 +38,7 @@ describe DockingStation do
         bike_class_double = double :bike_class, new: bike_double
         docking_station = DockingStation.new(bike_class_double)
         docking_station.release_bike
-        expect(docking_station.bike).to eq(nil)
+        expect(docking_station.bikes).to eq([])
       end
       it 'should raise an error if you try to release a bike from an empty dock' do
         dst = DockingStation.new
