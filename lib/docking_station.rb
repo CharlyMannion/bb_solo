@@ -5,6 +5,7 @@ class DockingStation
   attr_accessor :bike, :capacity, :bikes
 
   def initialize(bike_class = Bike)
+    # research if these attributes should be wrapped in classes
     @bike_class = bike_class
     @bike  = @bike_class.new
     @bikes = [@bike]
