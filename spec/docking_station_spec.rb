@@ -30,6 +30,10 @@ describe DockingStation do
         dst = DockingStation.new(bike_class_double)
         expect(dst.bikes).to eq([bike_double])
       end
+      it 'should accept a capacity greater than default capacity' do
+        dst = DockingStation.new(bike_class = Bike, capacity=30)
+        expect(dst.capacity).to eq(30)
+      end
     end
 
     describe '#release_bike' do

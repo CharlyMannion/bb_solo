@@ -50,4 +50,4 @@ end
 
 
 # p bike = Bike.new
-# p dst = DockingStation.new
+# p dst = DockingStation.new(bike_class = Bike, capacity=30)
