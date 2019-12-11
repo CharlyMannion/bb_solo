@@ -3,13 +3,14 @@ require_relative 'bike'
 class DockingStation
 
   attr_accessor :bike, :capacity, :bikes
+  DEFAULT_CAPACITY = 20
 
-  def initialize(bike_class = Bike)
+  def initialize(bike_class = Bike, capacity = DEFAULT_CAPACITY)
     # research if these attributes should be wrapped in classes
     @bike_class = bike_class
     @bike  = @bike_class.new
     @bikes = [@bike]
-    @capacity = 20
+    @capacity = capacity
   end
 
   def release_bike
