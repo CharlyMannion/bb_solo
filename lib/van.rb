@@ -4,4 +4,7 @@ class Van
   def initialize
     @bikes = []
   end
+
+  def load_bikes
+  end 
 end
