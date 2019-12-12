@@ -6,6 +6,6 @@ class Van
   end
 
   def pickup_broken_bikes(pickup_station)
-    @bikes = pickup_station.group_broken_bikes
+    @bikes = pickup_station.remove_broken_bikes
   end
 end
