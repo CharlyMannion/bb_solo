@@ -30,11 +30,12 @@ class DockingStation
     @bikes.each do |bike|
       @broken_bikes << bike if bike.broken?
     end
-    remove_broken_bikes
+    # remove_broken_bikes
     @broken_bikes
   end
 
   def remove_broken_bikes
+    group_broken_bikes
     @bikes = @bikes-@broken_bikes
     # @bikes = @bikes.reject{ |bike| @broken_bikes.include? bike }
     # load_van
