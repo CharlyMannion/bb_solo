@@ -5,7 +5,7 @@ class Van
     @bikes = []
   end
 
-  def pickup_broken_bikes(pickup_station)
+  def pickup_broken_dock(pickup_station)
     @bikes = pickup_station.remove_broken_bikes
   end
 end
