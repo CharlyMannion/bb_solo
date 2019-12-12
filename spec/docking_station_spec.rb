@@ -103,7 +103,7 @@ describe DockingStation do
       end
     end
 
-    describe '#collect_broken_bikes' do
+    describe '#group_broken_bikes' do
       it 'should gather the broken bikes from @bikes' do
         bikeone = work_bike
         biketwo = work_bike_two
@@ -114,25 +114,25 @@ describe DockingStation do
         dst.dock(biketwo)
         dst.dock(bikethree)
         dst.dock(bikefour)
-        dst.collect_broken_bikes
+        dst.group_broken_bikes
         p "broken bikes"
         p dst.broken_bikes
         expect(dst.broken_bikes.count).to be(2)
         expect(dst.broken_bikes).to eq([bikethree, bikefour])
       end
-      it 'should remove these bikes from the bikes array' do
-        bikeone = work_bike
-        biketwo = work_bike_two
-        bikethree = broke_bike
-        bikefour = broke_bike_two
-        bike_class_double = bk_class_double
-        dst = DockingStation.new(bike_class_double)
-        dst.dock(biketwo)
-        dst.dock(bikethree)
-        dst.dock(bikefour)
-        dst.collect_broken_bikes
-        expect(dst.bikes).to eq([bikeone, biketwo])
-      end
+      # it 'should remove these bikes from the bikes array' do
+      #   bikeone = work_bike
+      #   biketwo = work_bike_two
+      #   bikethree = broke_bike
+      #   bikefour = broke_bike_two
+      #   bike_class_double = bk_class_double
+      #   dst = DockingStation.new(bike_class_double)
+      #   dst.dock(biketwo)
+      #   dst.dock(bikethree)
+      #   dst.dock(bikefour)
+      #   dst.collect_broken_bikes
+      #   expect(dst.bikes).to eq([bikeone, biketwo])
+      # end
     end
 
     describe '#remove_broken_bikes' do
@@ -146,7 +146,7 @@ describe DockingStation do
         dst.dock(biketwo)
         dst.dock(bikethree)
         dst.dock(bikefour)
-        dst.collect_broken_bikes
+        dst.group_broken_bikes
         dst.remove_broken_bikes
         expect(dst.bikes).to eq([bikeone, biketwo])
       end

@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 
 class DockingStation
 
@@ -25,11 +26,11 @@ class DockingStation
     @bikes << bike
   end
 
-  def collect_broken_bikes
+  def group_broken_bikes
     @bikes.each do |bike|
       @broken_bikes << bike if bike.broken?
     end
-    remove_broken_bikes
+    # remove_broken_bikes
   end
 
   def remove_broken_bikes
