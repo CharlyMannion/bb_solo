@@ -7,7 +7,6 @@ class DockingStation
   DEFAULT_CAPACITY = 20
 
   def initialize(bike_class = Bike, capacity = DEFAULT_CAPACITY)
-    # research if these attributes should be wrapped in classes
     @bike_class = bike_class
     @bike  = @bike_class.new
     @bikes = [@bike]
@@ -36,7 +35,6 @@ class DockingStation
   def remove_broken_bikes
     group_broken_bikes
     @bikes = @bikes-@broken_bikes
-    # @bikes = @bikes.reject{ |bike| @broken_bikes.include? bike }
   end
 
   private

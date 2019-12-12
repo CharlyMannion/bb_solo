@@ -18,7 +18,6 @@ describe Van do
       van = Van.new
       van.pickup_broken_bikes(dst_double)
       expect(van.bikes).to eq([broke_bike, broke_bike_two])
-      # expect(dst_double.broken_bikes).to eq([])
     end
   end
 
