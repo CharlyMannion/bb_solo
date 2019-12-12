@@ -166,7 +166,7 @@ describe DockingStation do
         dst.group_broken_bikes
         van_dbl = van_double
         van_dbl.pickup_broken_bikes(dst)
-        # expect(dst.broken_bikes).to eq([])
+        expect(dst.broken_bikes).to eq([])
       end
     end
 
