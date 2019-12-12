@@ -31,6 +31,7 @@ class DockingStation
       @broken_bikes << bike if bike.broken?
     end
     # remove_broken_bikes
+    @broken_bikes
   end
 
   def remove_broken_bikes

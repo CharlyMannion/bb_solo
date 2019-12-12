@@ -115,8 +115,6 @@ describe DockingStation do
         dst.dock(bikethree)
         dst.dock(bikefour)
         dst.group_broken_bikes
-        p "broken bikes"
-        p dst.broken_bikes
         expect(dst.broken_bikes.count).to be(2)
         expect(dst.broken_bikes).to eq([bikethree, bikefour])
       end
