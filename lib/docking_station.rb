@@ -30,12 +30,14 @@ class DockingStation
     @bikes.each do |bike|
       @broken_bikes << bike if bike.broken?
     end
-    # remove_broken_bikes
+    remove_broken_bikes
     @broken_bikes
+    
   end
 
   def remove_broken_bikes
     @bikes = @bikes-@broken_bikes
+    # @broken_bikes = []
     # @bikes = @bikes.reject{ |bike| @broken_bikes.include? bike }
   end
 
@@ -67,17 +69,25 @@ end
 # p bike = Bike.new
 # p dst = DockingStation.new(bike_class = Bike, capacity=30)
 
-# bikeone = Bike.new
-# biketwo = Bike.new
-# bikethree = Bike.new
-# bikefour = Bike.new
-# bikethree.break_bike
-# bikefour.break_bike
-# p dst = DockingStation.new
-# p dst.dock(bikeone)
-# p dst.dock(biketwo)
-# p dst.dock(bikethree)
-# p dst.dock(bikefour)
-# p dst.collect_broken_bikes
-# p "broken bikes"
-# p dst.broken_bikes
+p "FEATURE TEST"
+p dst = DockingStation.new
+p bikeone = Bike.new
+p biketwo = Bike.new
+p bikethree = Bike.new
+p bikefour = Bike.new
+p bikethree.break_bike
+p bikefour.break_bike
+p dst.dock(bikeone)
+p dst.dock(biketwo)
+p dst.dock(bikethree)
+p dst.dock(bikefour)
+p dst.group_broken_bikes
+p "broken bikes"
+p dst.broken_bikes
+p van = Van.new
+p "van picks up bikes"
+p van.pickup_broken_bikes(dst)
+p van.bikes
+p "whats left in dst"
+p dst.broken_bikes
+p dst.bikes

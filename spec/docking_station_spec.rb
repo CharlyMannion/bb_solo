@@ -9,6 +9,8 @@ describe DockingStation do
   let(:broke_bike_two) { double :bike, working?: false, broken?: true }
   let(:bk_class_double) { double :bike_class, new: work_bike }
 
+  let(:van_double) { double :van, pickup_broken_bikes: [broke_bike, broke_bike_two] }
+
     it { is_expected.to respond_to "release_bike" }
     it { is_expected.to respond_to "dock" }
 
@@ -147,6 +149,24 @@ describe DockingStation do
         dst.group_broken_bikes
         dst.remove_broken_bikes
         expect(dst.bikes).to eq([bikeone, biketwo])
+      end
+    end
+
+    describe '#load_van' do
+      it 'should empty the docking station of broken bikes' do
+        bikeone = work_bike
+        biketwo = work_bike_two
+        bikethree = broke_bike
+        bikefour = broke_bike_two
+        bike_class_double = bk_class_double
+        dst = DockingStation.new(bike_class_double)
+        dst.dock(biketwo)
+        dst.dock(bikethree)
+        dst.dock(bikefour)
+        dst.group_broken_bikes
+        van_dbl = van_double
+        van_dbl.pickup_broken_bikes(dst)
+        # expect(dst.broken_bikes).to eq([])
       end
     end
 
