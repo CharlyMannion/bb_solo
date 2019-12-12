@@ -5,6 +5,6 @@ class Van
     @bikes = []
   end
 
-  def load_bikes
-  end 
+  def pickup_broken_bikes
+  end
 end

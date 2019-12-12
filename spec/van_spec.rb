@@ -1,7 +1,7 @@
 require 'van'
 
 describe Van do
-  it { is_expected.to respond_to "load_bikes" }
+  it { is_expected.to respond_to "pickup_broken_bikes" }
 
   it 'is empty when created' do
     van = Van.new
