@@ -1,3 +1,5 @@
+require_relative 'garage'
+
 class Van
   attr_reader :bikes
 
@@ -10,7 +12,8 @@ class Van
   end
 
   def drop_broken_garage(drop_garage)
-    # drop_garage.unload_broken_bikes
+    drop_garage.receive_broken_bikes
+    # drop_garage.bikes = @bikes
     @bikes = []
   end
 end
