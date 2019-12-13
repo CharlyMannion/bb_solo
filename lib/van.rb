@@ -12,8 +12,11 @@ class Van
   end
 
   def drop_broken_garage(drop_garage)
-    drop_garage.receive_broken_bikes
-    # drop_garage.bikes = @bikes
-    @bikes = []
+    p "before drop"
+    p @bikes
+    p drop_garage.receive_broken_bikes(@bikes)
+    p drop_garage.bikes
+    p "after"
+    p @bikes = []
   end
 end

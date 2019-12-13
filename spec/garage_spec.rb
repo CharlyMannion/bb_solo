@@ -13,13 +13,15 @@ describe Garage do
     end
   end
 
-  # describe '#receive_broken_bikes' do
-  #   it 'should collect broken bikes from the van' do
-  #     grg = Garage.new
-  #     van = van_double
-  #     van.drop_broken_garage(grg)
-  #     expect(grg.bikes).to eq([broke_bike, broke_bike_two])
-  #   end
-  # end
+  describe '#receive_broken_bikes' do
+    it 'should collect broken bikes from the van' do
+      grg = Garage.new
+      van = van_double
+      p "in garage, before"
+      p van.drop_broken_garage(grg)
+      p "in garage, after"
+      p expect(grg.bikes).to eq([broke_bike, broke_bike_two])
+    end
+  end
 
 end
