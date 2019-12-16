@@ -11,7 +11,7 @@ class Van
     @bikes = pickup_station.remove_broken_bikes
   end
 
-  def drop_broken_garage(drop_garage)
+  def drop_broken_garage(drop_garage = Garage.new)
     @bikes
     p "in van 1"
     p @bikes
