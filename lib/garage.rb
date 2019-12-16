@@ -15,8 +15,8 @@ class Garage
   end
 end
 
-p grg = Garage.new
-bikeone = Bike.new
-biketwo = Bike.new
-p grg.receive_broken_bikes([bikeone, biketwo])
+# p grg = Garage.new
+# bikeone = Bike.new
+# biketwo = Bike.new
+# p grg.receive_broken_bikes([bikeone, biketwo])
 # p grg.bikes
