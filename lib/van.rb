@@ -13,8 +13,10 @@ class Van
 
   def drop_broken_garage(drop_garage = Garage.new)
     @bikes
-    drop_garage.receive_broken_bikes(@bikes)
-    # drop_garage.bikes
+    # p "in van 1"
+    # p drop_garage.receive_broken_bikes(@bikes)
+    # p "in van"
+    # p drop_garage.bikes
     @bikes = []
   end
 end
