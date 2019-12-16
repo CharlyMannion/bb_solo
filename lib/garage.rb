@@ -8,9 +8,9 @@ class Garage
   end
 
   def receive_broken_bikes(bikes_array)
-    p "bikes array below"
-    p bikes_array
-    p "assignment of bikes below"
+    # p "bikes array below"
+    # p bikes_array
+    # p "assignment of bikes below"
     p @bikes = bikes_array
   end
 end
