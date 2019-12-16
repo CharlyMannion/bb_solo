@@ -18,6 +18,8 @@ describe Garage do
       grg = Garage.new
       van = van_double
       van.drop_broken_garage(grg)
+ #      works with explicit call below for garage to receive broken bikes, but should be refactored so the call is made from
+ # van. Research required
       grg.receive_broken_bikes(van.bikes)
       expect(grg.bikes).to eq([broke_bike, broke_bike_two])
     end
